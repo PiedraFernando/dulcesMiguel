@@ -50,6 +50,7 @@
                         <input type="number" class="form-control" id="venta" name="venta" placeholder="Precio venta" value="{{$producto->precio_venta}}">
                     </div>
                     <button type="submit" class="btn btn-primary col-12 col-md-3 mb-3">Guardar cambios</button>
+                    <a href="/producto" class="btn btn-danger col-12 col-md-3 mb-3">cancelar</a>
                 </form>
             </div>
         </div>
