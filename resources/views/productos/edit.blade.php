@@ -8,7 +8,7 @@
     <div class="container">
         <div class="row mb-3">
             <div class="col">
-                <h1>Crear producto</h1>
+                <h1>Modificar producto</h1>
             </div>
         </div>
         <div class="row">
@@ -22,33 +22,34 @@
                 </div>
             @endif
             <div class="col">
-                <form action="/producto" method="POST">
+                <form action="{{route('producto.update', $producto->id)}}" method="POST">
+                    @method('PATCH')
                     @csrf
                     <div class="form-group">
                         <label for="nombre">Nombre</label>
-                        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre">
+                        <input type="text" class="form-control" id="nombre" name="nombre" value="{{$producto->nombre}}">
                     </div>
                     <div class="form-group">    
                         <label for="descripcion">Descripción</label>
-                        <textarea type="text" class="form-control" id="descripcion" name="descripcion" placeholder="descripción"></textarea>
+                        <textarea type="text" class="form-control" id="descripcion" name="descripcion" placeholder="descripción">{{$producto->descripcion}}</textarea>
                     </div>
                     <div class="form-group">    
                         <label for="clave">Clave</label>
-                        <input type="text" class="form-control" id="clave" name="clave" placeholder="Clave">
+                        <input type="text" class="form-control" id="clave" name="clave" placeholder="Clave" value="{{$producto->clave}}">
                     </div>
                     <div class="form-group">    
                         <label for="codigo">Codigo de barras</label>
-                        <input type="number" class="form-control" id="codigo" name="codigo" placeholder="Codigo de barras">
+                        <input type="number" class="form-control" id="codigo" name="codigo" placeholder="Codigo de barras" value="{{$producto->codigo_de_barras}}">
                     </div>
                     <div class="form-group">    
                         <label for="compra">Precio compra</label>
-                        <input type="number" class="form-control" id="compra" name="compra" placeholder="Precio compra">
+                        <input type="number" class="form-control" id="compra" name="compra" placeholder="Precio compra" value="{{$producto->precio_compra}}">
                     </div>
                     <div class="form-group">    
                         <label for="venta">Precio venta</label>
-                        <input type="number" class="form-control" id="venta" name="venta" placeholder="Precio venta">
+                        <input type="number" class="form-control" id="venta" name="venta" placeholder="Precio venta" value="{{$producto->precio_venta}}">
                     </div>
-                    <button type="submit" class="btn btn-primary col-12 col-md-3 mb-3">Guardar</button>
+                    <button type="submit" class="btn btn-primary col-12 col-md-3 mb-3">Guardar cambios</button>
                 </form>
             </div>
         </div>

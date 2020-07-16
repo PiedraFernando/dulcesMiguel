@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Producto;
+use App\Http\Requests\ProductoForReques;
 
 class ProductoController extends Controller
 {
@@ -34,16 +35,17 @@ class ProductoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductoForReques $request)
     {
         $producto = new Producto();
-        $producto->nombre = $request->input('nombre');
-        $producto->descripcion = request('descripcion');
-        $producto->clave = request('clave');
-        $producto->codigo_de_barras = request('codigo');
-        $producto->precio_compra = request('compra');
-        $producto->precio_venta = request('venta');
-        echo(request('nombre'));
+        $producto->nombre = $request->get('nombre');
+        $producto->descripcion = $request->get('descripcion');
+        $producto->clave = $request->get('clave');
+        $producto->codigo_de_barras = $request->get('codigo');
+        $producto->precio_compra = $request->get('compra');
+        $producto->precio_venta = $request->get('venta');
+        $producto->save();
+        return redirect('/producto');
     }
 
     /**
@@ -54,7 +56,7 @@ class ProductoController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -65,7 +67,7 @@ class ProductoController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('productos.edit', ['producto'=>Producto::findorFail($id)]);
     }
 
     /**
@@ -75,9 +77,17 @@ class ProductoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProductoForReques $request, $id)
     {
-        //
+        $producto = Producto::findorFail($id);
+        $producto->nombre = $request->get('nombre');
+        $producto->descripcion = $request->get('descripcion');
+        $producto->clave = $request->get('clave');
+        $producto->codigo_de_barras = $request->get('codigo');
+        $producto->precio_compra = $request->get('compra');
+        $producto->precio_venta = $request->get('venta');
+        $producto->update();
+        return redirect('/producto');
     }
 
     /**
@@ -88,6 +98,8 @@ class ProductoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $producto = Producto::findorFail($id);
+        $producto->delete();
+        return redirect('/producto');
     }
 }

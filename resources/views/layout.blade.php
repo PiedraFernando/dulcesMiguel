@@ -20,7 +20,7 @@
         <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active h-100">
-                    <a class="nav-link h-100" href="#">Productos</a>
+                    <a class="nav-link h-100" href="producto">Productos</a>
                 </li>
             </ul>
         </div>

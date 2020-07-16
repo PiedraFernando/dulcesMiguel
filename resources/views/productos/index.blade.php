@@ -25,6 +25,7 @@
                     <th scope="col">Codigo de barras</th>
                     <th scope="col">Precio compra</th>
                     <th scope="col">Precio venta</th>
+                    <th scope="col">Opciones</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -37,6 +38,14 @@
                             <td>{{$producto->codigo_de_barras}}</td>
                             <td>{{$producto->precio_compra}}</td>
                             <td>{{$producto->precio_venta}}</td>
+                            <td>
+                                <a href="{{route('producto.edit', $producto->id)}}" type="button" class="btn btn-primary">Modificar</a>
+                                <form action="{{route('producto.destroy', $producto->id)}}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                                </form>
+                            </td>
                         </tr> 
                     @endforeach
                     
