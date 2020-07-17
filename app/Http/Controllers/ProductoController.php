@@ -13,12 +13,23 @@ class ProductoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $productos = Producto::all();
-        return view('productos.index',['productos' => $productos]);
+        if($request){
+            $query = trim($request->get('search'));
+            $productos = Producto::where('nombre','LIKE','%'.$query.'%')
+                ->orWhere('clave','LIKE','%'.$query.'%')
+                ->orWhere('codigo_de_barras','LIKE','%'.$query.'%')
+                ->orderby('nombre','asc')->get();
+            return view('productos.index',['productos' => $productos,'search'=>$query]);
+        }
     }
-
+    public function faltantes()
+    {
+        $productos = Producto::where('cantidad','<','5')
+                ->orderby('nombre','asc')->get();
+        return view('productos.index',['productos' => $productos,'faltantes'=> "f"]);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -44,6 +55,7 @@ class ProductoController extends Controller
         $producto->codigo_de_barras = $request->get('codigo');
         $producto->precio_compra = $request->get('compra');
         $producto->precio_venta = $request->get('venta');
+        $producto->cantidad = $request->get('cantidad');
         $producto->save();
         return redirect('/producto');
     }
@@ -86,6 +98,7 @@ class ProductoController extends Controller
         $producto->codigo_de_barras = $request->get('codigo');
         $producto->precio_compra = $request->get('compra');
         $producto->precio_venta = $request->get('venta');
+        $producto->cantidad = $request->get('cantidad');
         $producto->update();
         return redirect('/producto');
     }

@@ -21,6 +21,7 @@ class CreateProductosTable extends Migration
             $table->text('codigo_de_barras');
             $table->float('precio_compra',8,2);
             $table->float('precio_venta',8,2);
+            $table->float('cantidad',8,2);
             $table->timestamps();
         });
     }

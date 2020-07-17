@@ -16,5 +16,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () { /* manda al login */
     return view('login');
 });
-
+Route::get('/producto/faltantes', 'ProductoController@faltantes');
 Route::resource('producto', 'ProductoController');

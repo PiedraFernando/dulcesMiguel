@@ -49,6 +49,10 @@
                         <label for="venta">Precio venta</label>
                         <input type="number" class="form-control" id="venta" name="venta" placeholder="Precio venta" value="{{$producto->precio_venta}}">
                     </div>
+                    <div class="form-group">    
+                        <label for="Cantidad">Cantidad</label>
+                        <input type="number" class="form-control" id="cantidad" name="cantidad" placeholder="Cantidad" value="{{$producto->cantidad}}">
+                    </div>
                     <button type="submit" class="btn btn-primary col-12 col-md-3 mb-3">Guardar cambios</button>
                     <a href="/producto" class="btn btn-danger col-12 col-md-3 mb-3">cancelar</a>
                 </form>
