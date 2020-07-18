@@ -11,7 +11,7 @@
               <h1>Productos</h1>
             </div>
             <form action="/producto" class="form-inline ol-sm-12 col-md-4">
-                <input class="form-control w-75" type="search" name="search" placeholder="Nombre, codigo o codigo de barras del producto" aria-label="Search">
+                <input class="form-control w-75" type="search" name="search" placeholder="Nombre, código o código de barras del producto" aria-label="Search">
                 <button class="btn btn-outline-success w-25" type="submit">Buscar</button>
             </form>
             <div class="col-sm-12 col-md-3">
@@ -43,7 +43,7 @@
                     <th scope="col">Nombre</th>
                     <th scope="col">Descripción</th>
                     <th scope="col">clave</th>
-                    <th scope="col">Codigo de barras</th>
+                    <th scope="col">Código de barras</th>
                     <th scope="col">Precio compra</th>
                     <th scope="col">Precio venta</th>
                     <th scope="col">Cantidad actual</th>
