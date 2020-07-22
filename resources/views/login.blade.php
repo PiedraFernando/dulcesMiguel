@@ -12,7 +12,7 @@
                 <form class="my-3">
                     <div class="form-group">
                         <label for="usuario">Usuario</label>
-                        <input type="text" class="form-control" id="usuario" placeholder="usuario">
+                        <input type="text" class="form-control" id="usuario" placeholder="Usuario">
                     </div>
                     <div class="form-group">
                         <label for="password">Contraseña</label>
