@@ -1,7 +1,7 @@
 @extends('main') <!-- Extiende del main -->
 
 @section('head') <!-- sustituye esta seccion del head por lo siguiente escrito -->
-    <title> Login Dulces Don Miguel </title>
+    <title> Login Dulces Miguel </title>
 @endsection
 
 @section('body') <!-- sustituye esta seccion del body por lo siguiente escrito -->
