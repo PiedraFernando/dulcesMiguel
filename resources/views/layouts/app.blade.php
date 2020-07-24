@@ -54,7 +54,7 @@
                 </form>
 
                 <!-- Right navbar links -->
-                
+
             </nav>
             <!-- /.navbar -->
 
@@ -118,19 +118,32 @@
                                     </p>
                                 </a>
                             </li>
+
                             <li class="nav-item">
                                 <a href="producto"
                                     class="{{ Request::path() === 'productos' ? 'nav-link active' : 'nav-link' }}">
                                     <i class="nav-icon fas fa-users"></i>
                                     <p>
-                                        productos
+                                        Productos
                                         <?php use App\Producto; $users_count = User::all()->count(); ?>
-                                       
+
                                     </p>
                                 </a>
                             </li>
 
-                            
+                            <li class="nav-item">
+                                <a href="categorias"
+                                   class="{{ Request::path() === 'categorias' ? 'nav-link active' : 'nav-link' }}">
+                                    <i class="nav-icon fas fa-users"></i>
+                                    <p>
+                                        Categorias
+                                        <?php use App\Categoria; $users_count = User::all()->count(); ?>
+
+                                    </p>
+                                </a>
+                            </li>
+
+
 
                         </ul>
                     </nav>
@@ -155,8 +168,8 @@
             </div>
             <!-- /.content-wrapper -->
             <footer class="main-footer">
-              
-               
+
+
             </footer>
 
             <!-- Control Sidebar -->
