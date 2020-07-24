@@ -1,13 +1,13 @@
-@extends('layout') <!-- Extiende del main -->
+@extends('layouts.app') 
+@extends('layout') 
 
-@section('head') <!-- sustituye esta seccion del head por lo siguiente escrito -->
-    <title> Productos Dulces Miguel </title>
-@endsection
 
-@section('body') <!-- sustituye esta seccion del body por lo siguiente escrito -->
+@section('content')
+ <!-- sustituye esta seccion del body por lo siguiente escrito -->
     <div class="container">
         <div class="row">
-            <div class="col-sm-12 col-md-3">
+           
+            <div class="col-sm-12 col-md-2">
               <h1>Productos</h1>
             </div>
             <form action="/producto" class="form-inline ol-sm-12 col-md-4">
@@ -35,10 +35,14 @@
                 </div>
             </h6>
         @endif
+        
         <div class="table-responsive">
+            <div class="col-sm-1 col-md-1">
+            </div>
             <table class="table">
                 <thead>
                 <tr>
+                    <th scope="col">#</th>
                     <th scope="col">#</th>
                     <th scope="col">Nombre</th>
                     <th scope="col">Descripción</th>
@@ -53,6 +57,7 @@
                 <tbody>
                     @foreach ($productos as $producto)
                         <tr>
+                            <th scope="col">#</th>
                             <th scope="row">{{$producto->id}}</th>
                             <td>{{$producto->nombre}}</td>
                             <td>{{$producto->descripcion}}</td>
@@ -77,4 +82,5 @@
         </div>
     </div>
     
-@endsection
+  
+    @endsection

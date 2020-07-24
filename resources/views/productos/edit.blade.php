@@ -1,10 +1,8 @@
-@extends('layout') <!-- Extiende del main -->
+@extends('layouts.app') <!-- Extiende del main -->
 
-@section('head') <!-- sustituye esta seccion del head por lo siguiente escrito -->
-    <title> Productos Dulces Miguel </title>
-@endsection
 
-@section('body') <!-- sustituye esta seccion del body por lo siguiente escrito -->
+
+@section('content') <!-- sustituye esta seccion del body por lo siguiente escrito -->
     <div class="container">
         <div class="row mb-3">
             <div class="col">

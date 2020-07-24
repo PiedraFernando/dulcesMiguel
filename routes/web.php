@@ -13,8 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () { /* manda al login */
-    return view('login');
-});
+//Route::get('/', function () { /* manda al login */
+//    return view('login');
+//});
+
 Route::get('/producto/faltantes', 'ProductoController@faltantes');
 Route::resource('producto', 'ProductoController');
+Auth::routes();
+
+Route::get('/', 'HomeController@index')->name('home');
+Route::resource('usuarios', 'UserController');
