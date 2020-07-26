@@ -16,12 +16,11 @@ class CreateProductosTable extends Migration
         Schema::create('productos', function (Blueprint $table) {
             $table->id();
             $table->text('nombre');
-            $table->longText('descripcion');
-            $table->text('clave');
-            $table->text('codigo_de_barras');
+            $table->text('abreviacion');
             $table->float('precio_compra',8,2);
             $table->float('precio_venta',8,2);
-            $table->float('cantidad',8,2);
+            $table->float('cantidad_almacen',8,2);
+            $table->float('cantidad_carro',8,2);
             $table->timestamps();
         });
     }

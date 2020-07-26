@@ -18,15 +18,39 @@ class ProductoController extends Controller
         if($request){
             $query = trim($request->get('search'));
             $productos = Producto::where('nombre','LIKE','%'.$query.'%')
-                ->orWhere('clave','LIKE','%'.$query.'%')
-                ->orWhere('codigo_de_barras','LIKE','%'.$query.'%')
+                ->orWhere('abreviacion','LIKE','%'.$query.'%')
                 ->orderby('nombre','asc')->get();
             return view('productos.index',['productos' => $productos,'search'=>$query]);
         }
     }
+    public function add(Request $request)
+    {
+        $cantidad = $request->get("cantidad");
+        $producto = Producto::where('id', $request->get("id"))->firstOrFail(); 
+        $cantidad += $producto->cantidad_almacen; 
+        Producto::where('id', $request->get("id"))
+        ->update(['cantidad_almacen' => $cantidad]);
+        return redirect('/producto');
+    }
+    public function addCar(Request $request)
+    {
+        $cantidad = $request->get("cantidad");
+        $producto = Producto::where('id', $request->get("id"))->firstOrFail(); 
+        $cantidadcarro = $cantidad + $producto->cantidad_carro; 
+        $cantidadalmacen = $producto->cantidad_almacen - $cantidad; 
+        if ($cantidadalmacen<0) {
+            return redirect('/producto');
+        }else{
+            Producto::where('id', $request->get("id"))
+            ->update(['cantidad_almacen' => $cantidadalmacen]);
+            Producto::where('id', $request->get("id"))
+            ->update(['cantidad_carro' => $cantidadcarro]);
+            return redirect('/producto');
+        }
+    }
     public function faltantes()
     {
-        $productos = Producto::where('cantidad','<','5')
+        $productos = Producto::where('cantidad_almacen','<','5')
                 ->orderby('nombre','asc')->get();
         return view('productos.index',['productos' => $productos,'faltantes'=> "f"]);
     }
@@ -50,12 +74,11 @@ class ProductoController extends Controller
     {
         $producto = new Producto();
         $producto->nombre = $request->get('nombre');
-        $producto->descripcion = $request->get('descripcion');
-        $producto->clave = $request->get('clave');
-        $producto->codigo_de_barras = $request->get('codigo');
+        $producto->abreviacion = $request->get('abreviacion');
         $producto->precio_compra = $request->get('compra');
         $producto->precio_venta = $request->get('venta');
-        $producto->cantidad = $request->get('cantidad');
+        $producto->cantidad_almacen = $request->get('cantidad_almacen');
+        $producto->cantidad_carro = $request->get('cantidad_carro');
         $producto->save();
         return redirect('/producto');
     }

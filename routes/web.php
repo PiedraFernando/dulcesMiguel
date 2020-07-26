@@ -17,9 +17,13 @@ use Illuminate\Support\Facades\Route;
 //    return view('login');
 //});
 
+Route::post('/producto/add', 'ProductoController@add');
+Route::post('/producto/addCar', 'ProductoController@addCar');
 Route::get('/producto/faltantes', 'ProductoController@faltantes');
 Route::resource('producto', 'ProductoController');
 Auth::routes();
+
+
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::resource('usuarios', 'UserController');
