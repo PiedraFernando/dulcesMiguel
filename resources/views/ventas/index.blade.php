@@ -30,7 +30,7 @@
                 <thead>
                 <tr>
                     <th scope="col">nombre</th>
-                    <th scope="col">descripción</th>
+                    <th scope="col">Abreviación</th>
                     <th scope="col">Precio</th>
                     <th scope="col">Acción</th>
                     
@@ -79,7 +79,7 @@
         ajax: "{{ url('api/ventas') }}",
         columns: [
             {data: 'nombre'},
-            {data: 'descripcion'},
+            {data: 'abreviacion'},
             {data: 'precio_venta'},
             {data: 'btn'},
             
