@@ -27,16 +27,8 @@
                         <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre">
                     </div>
                     <div class="form-group">    
-                        <label for="descripcion">Descripción</label>
-                        <textarea type="text" class="form-control" id="descripcion" name="descripcion" placeholder="descripción"></textarea>
-                    </div>
-                    <div class="form-group">    
-                        <label for="clave">Clave</label>
-                        <input type="text" class="form-control" id="clave" name="clave" placeholder="Clave">
-                    </div>
-                    <div class="form-group">    
-                        <label for="codigo">Codigo de barras</label>
-                        <input type="number" class="form-control" id="codigo" name="codigo" placeholder="Codigo de barras">
+                        <label for="abreviacion">abreviacion</label>
+                        <input type="text" class="form-control" id="abreviacion" name="abreviacion" placeholder="abreviacion">
                     </div>
                     <div class="form-group">    
                         <label for="compra">Precio compra</label>
@@ -47,8 +39,9 @@
                         <input type="number" class="form-control" id="venta" name="venta" placeholder="Precio venta">
                     </div>
                     <div class="form-group">    
-                        <label for="Cantidad">Cantidad</label>
-                        <input type="number" class="form-control" id="cantidad" name="cantidad" placeholder="Cantidad">
+                        <label for="Cantidad">Cantidad en almacen</label>
+                        <input type="number" class="form-control" id="cantidad" name="cantidad_almacen" placeholder="Cantidad">
+                        <input hidden="true" type="number" class="form-control" id="cantidad" name="cantidad_carro" placeholder="Cantidad" value="0">
                     </div>
                     <button type="submit" class="btn btn-primary col-12 col-md-3 mb-3">Guardar</button>
                     <a href="/producto" class="btn btn-danger col-12 col-md-3 mb-3">cancelar </a>

@@ -25,11 +25,10 @@ class ProductoForReques extends FormRequest
     {
         return [
             'nombre' => 'required|max:255',
-            'descripcion' => 'required|max:255',
-            'clave' => 'required|max:255',
-            'codigo' => 'required|max:255',
+            'abreviacion' => 'required|max:255',
             'compra' => 'required|max:255',
             'venta' => 'required|max:255',
+            'cantidad_almacen' => 'required|max:255'
         ];
     }
 }
