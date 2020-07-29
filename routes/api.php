@@ -22,4 +22,13 @@ return datatables()
 ->toJson();
 });
 
+/*Route::get('productos', function (){
+    return datatables()
+    ->eloquent(App\Producto::query())
+    ->addColumn('input', 'ventas.miput')
+    ->rawColumns(['input'])
+    ->toJson();
+    });
+    */
+
 

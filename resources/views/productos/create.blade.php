@@ -20,12 +20,17 @@
                 </div>
             @endif
             <div class="col">
-                <form action="/producto" method="POST">
+                <form action="/producto" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label for="nombre">Nombre</label>
                         <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre">
                     </div>
+                    <div class="form-group">
+                    <label for="imagen">Imagen</label>
+                    <input type="file" class="form-control" id="imagen" name="imagen">
+
+                </div>
                     <div class="form-group">    
                         <label for="abreviacion">abreviacion</label>
                         <input type="text" class="form-control" id="abreviacion" name="abreviacion" placeholder="abreviacion">

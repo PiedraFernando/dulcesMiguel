@@ -2,7 +2,7 @@
 
 
 
-@section('content') <!-- sustituye esta seccion del body por lo siguiente escrito -->
+@section('content')  <!-- sustituye esta seccion del body por lo siguiente escrito -->
     <div class="container">
         <div class="row mb-3">
             <div class="col">
@@ -20,24 +20,20 @@
                 </div>
             @endif
             <div class="col">
-                <form action="{{route('producto.update', $producto->id)}}" method="POST">
+                <form action="{{route('producto.update', $producto->id)}}" method="POST" enctype="multipart/form-data">
                     @method('PATCH')
                     @csrf
                     <div class="form-group">
                         <label for="nombre">Nombre</label>
                         <input type="text" class="form-control" id="nombre" name="nombre" value="{{$producto->nombre}}">
                     </div>
+                    <div class="form-group">
+                    <label for="imagen">Imagen</label>
+                    <input type="file" class="form-control" id="imagen" name="imagen" placeholder="imagen">
+                </div>
                     <div class="form-group">    
-                        <label for="descripcion">Descripción</label>
-                        <textarea type="text" class="form-control" id="descripcion" name="descripcion" placeholder="descripción">{{$producto->descripcion}}</textarea>
-                    </div>
-                    <div class="form-group">    
-                        <label for="clave">Clave</label>
-                        <input type="text" class="form-control" id="clave" name="clave" placeholder="Clave" value="{{$producto->clave}}">
-                    </div>
-                    <div class="form-group">    
-                        <label for="codigo">Codigo de barras</label>
-                        <input type="number" class="form-control" id="codigo" name="codigo" placeholder="Codigo de barras" value="{{$producto->codigo_de_barras}}">
+                        <label for="descripcion">Abreviación</label>
+                        <input type="text" class="form-control" id="abreviacion" name="abreviacion" placeholder=""  value="{{$producto->abreviacion}}">
                     </div>
                     <div class="form-group">    
                         <label for="compra">Precio compra</label>
@@ -49,7 +45,11 @@
                     </div>
                     <div class="form-group">    
                         <label for="Cantidad">Cantidad</label>
-                        <input type="number" class="form-control" id="cantidad" name="cantidad" placeholder="Cantidad" value="{{$producto->cantidad}}">
+                        <input type="number" class="form-control" id="cantidad_almacen" name="cantidad_almacen" placeholder="cantidad_almacen" value="{{$producto->cantidad_almacen}}">
+                    </div>
+                    <div class="form-group">    
+                        <label for="Cantidad">Cantidad en carro</label>
+                        <input type="number" class="form-control" id="cantidad_carro" name="cantidad_carro" placeholder="cantidad_carro" value="{{$producto->cantidad_carro}}">
                     </div>
                     <button type="submit" class="btn btn-primary col-12 col-md-3 mb-3">Guardar cambios</button>
                     <a href="/producto" class="btn btn-danger col-12 col-md-3 mb-3">cancelar</a>
@@ -58,4 +58,4 @@
         </div>
         
     </div>
-@endsection
+    @endsection

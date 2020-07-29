@@ -72,6 +72,12 @@ class ProductoController extends Controller
      */
     public function store(ProductoForReques $request)
     {
+        
+        if ($request->hasFile('imagen')) {
+            $file = $request->file('imagen');
+            $name = time() . $file->getClientOriginalName();
+            $file->move(public_path() . '/imagenes/', $name);
+        }
         $producto = new Producto();
         $producto->nombre = $request->get('nombre');
         $producto->abreviacion = $request->get('abreviacion');
@@ -79,6 +85,9 @@ class ProductoController extends Controller
         $producto->precio_venta = $request->get('venta');
         $producto->cantidad_almacen = $request->get('cantidad_almacen');
         $producto->cantidad_carro = $request->get('cantidad_carro');
+        if ($request->hasFile('imagen')) {
+            $producto->imagen = $name;
+        }
         $producto->save();
         return redirect('/producto');
     }
@@ -114,14 +123,21 @@ class ProductoController extends Controller
      */
     public function update(ProductoForReques $request, $id)
     {
+        if ($request->hasFile('imagen')) {
+            $file = $request->file('imagen');
+            $name = time() . $file->getClientOriginalName();
+            $file->move(public_path() . '/imagenes/', $name);
+        }
         $producto = Producto::findorFail($id);
         $producto->nombre = $request->get('nombre');
-        $producto->descripcion = $request->get('descripcion');
-        $producto->clave = $request->get('clave');
-        $producto->codigo_de_barras = $request->get('codigo');
+        $producto->abreviacion = $request->get('abreviacion');
         $producto->precio_compra = $request->get('compra');
         $producto->precio_venta = $request->get('venta');
-        $producto->cantidad = $request->get('cantidad');
+        $producto->cantidad_almacen = $request->get('cantidad_almacen');
+        $producto->cantidad_carro = $request->get('cantidad_carro');
+        if ($request->hasFile('imagen')) {
+            $producto->imagen = $name;
+        }
         $producto->update();
         return redirect('/producto');
     }

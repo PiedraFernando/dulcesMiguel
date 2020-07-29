@@ -123,7 +123,7 @@
                             </li>
 
                             <li class="nav-item">
-                                <a href="producto"
+                                <a href="{{url('producto') }}"
                                     class="{{ Request::path() === 'productos' ? 'nav-link active' : 'nav-link' }}">
                                     <i class="nav-icon fas fa-users"></i>
                                     <p>
@@ -135,7 +135,7 @@
                             </li>
 
                             <li class="nav-item">
-                                <a href="categorias"
+                                <a href="{{url('categorias') }}"
                                    class="{{ Request::path() === 'categorias' ? 'nav-link active' : 'nav-link' }}">
                                     <i class="nav-icon fas fa-users"></i>
                                     <p>
@@ -148,7 +148,7 @@
 
 
                             <li class="nav-item">
-                                <a href="ventas"
+                                <a href="{{url('ventas') }}"
                                    class="{{ Request::path() === 'ventas' ? 'nav-link active' : 'nav-link' }}">
                                     <i class="nav-icon fas fa-users"></i>
                                     <p>

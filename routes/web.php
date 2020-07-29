@@ -24,8 +24,8 @@ Route::resource('producto', 'ProductoController');
 Auth::routes();
 
 
-
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/ventas/search', 'VentasController@search');
 Route::resource('usuarios', 'UserController');
 
 Route::resource('categorias', 'CategoriaController');

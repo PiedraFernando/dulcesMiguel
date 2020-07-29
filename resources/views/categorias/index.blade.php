@@ -4,7 +4,7 @@
 @section('content')
 
 <div class="container">
-    <h2>Gestion de Categorias <a href="categorias/create"> <button type="button" class="btn btn-success float-right">Agregar Categoria </button></a> </h2>
+    <h2>Gestion de Categorias <a href="{{url('categorias/create') }}"> <button type="button" class="btn btn-success float-right">Agregar Categoria </button></a> </h2>
     <table class="table table-hover">
         <thead>
         <tr>
