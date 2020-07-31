@@ -10,7 +10,6 @@
         <tr>
             <th scope="col">ID</th>
             <th scope="col">Categoria</th>
-            <th scope="col">Sub Categoria</th>
             <th scope="col">Opciones</th>
         </tr>
         </thead>
@@ -19,7 +18,6 @@
             <tr>
                 <th scope="row">{{$categoria->id}}</th>
                 <td>{{$categoria->categoria}}</td>
-                <td>{{$categoria->sub_categoria}}</td>
                 <td>
 
                     <form action="{{route ('categorias.destroy', $categoria->id ) }} " method="POST">

@@ -26,8 +26,6 @@ class CategoriaController extends Controller
         $categoria =  new Categoria();
 
         $categoria->categoria = request('categoria');
-        $categoria->sub_categoria = request('sub_categoria');
-
         $categoria->save();
 
         return redirect('/categorias');
@@ -51,8 +49,6 @@ class CategoriaController extends Controller
         $categoria =  Categoria::findOrFail($id);
 
         $categoria->categoria = $request->get('categoria');
-        $categoria->sub_categoria = $request->get('sub_categoria');
-
         $categoria->update();
 
         return redirect('/categorias');
