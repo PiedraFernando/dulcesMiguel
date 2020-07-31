@@ -17,7 +17,7 @@ class CreateProductosTable extends Migration
             $table->id();
             $table->text('nombre');
             $table->text('abreviacion');
-            $table->string('imagen');
+            $table->string('imagen')->nullable();
             $table->float('precio_compra',8,2);
             $table->float('precio_venta',8,2);
             $table->float('cantidad_almacen',8,2);

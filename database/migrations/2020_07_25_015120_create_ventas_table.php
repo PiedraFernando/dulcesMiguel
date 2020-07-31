@@ -16,9 +16,8 @@ class CreateVentasTable extends Migration
         //tabla que guarda las ventas, se complementa con detalles venta
         Schema::create('ventas', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('idUsuario');
-            $table->Date('fechaVenta');
             $table->Float('total');
+            $table->string('fecha',20);
             $table->timestamps();
         });
     }

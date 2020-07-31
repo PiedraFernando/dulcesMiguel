@@ -34,6 +34,8 @@
     <div id="app">
         <div class="wrapper">
 
+            
+            <!-- /.navbar -->
             <!-- Navbar -->
             <nav class="main-header navbar navbar-expand navbar-white navbar-light">
                 <!-- Left navbar links -->
@@ -42,24 +44,7 @@
                         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
                     </li>
                 </ul>
-
-                <!-- SEARCH FORM -->
-                <form class="form-inline ml-3">
-                    <div class="input-group input-group-sm">
-                        <input class="form-control form-control-navbar" type="search" placeholder="Search"
-                            aria-label="Search">
-                        <div class="input-group-append">
-                            <button class="btn btn-navbar" type="submit">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </div>
-                    </div>
-                </form>
-
-                <!-- Right navbar links -->
-
             </nav>
-            <!-- /.navbar -->
 
             <!-- Main Sidebar Container -->
             <aside class="main-sidebar sidebar-dark-primary elevation-4">
@@ -102,11 +87,14 @@
                     <nav class="mt-2">
                         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                             data-accordion="false">
-
                             <li class="nav-item">
-                                <a href="/" class="{{ Request::path() === '/' ? 'nav-link active' : 'nav-link' }}">
-                                    <i class="nav-icon fas fa-home"></i>
-                                    <p>Inicio</p>
+                                <a href="/totalventas"
+                                   class="{{ Request::path() === 'totalventas' ? 'nav-link active' : 'nav-link' }}">
+                                    <i class="nav-icon  fas fa-money-bill"></i>
+                                    <p>
+                                        Total ventas
+
+                                    </p>
                                 </a>
                             </li>
 
@@ -125,10 +113,11 @@
                             <li class="nav-item">
                                 <a href="{{url('producto') }}"
                                     class="{{ Request::path() === 'productos' ? 'nav-link active' : 'nav-link' }}">
-                                    <i class="nav-icon fas fa-users"></i>
+                                    <i class="nav-icon fas fa-barcode"></i>
                                     <p>
                                         Productos
-                                        <?php use App\Producto; $users_count = User::all()->count(); ?>
+                                        <?php use App\Producto; $productos_cont = Producto::all()->count(); ?>
+                                        <span class="right badge badge-danger">{{ $productos_cont ?? '0' }}</span>
 
                                     </p>
                                 </a>
@@ -137,11 +126,11 @@
                             <li class="nav-item">
                                 <a href="{{url('categorias') }}"
                                    class="{{ Request::path() === 'categorias' ? 'nav-link active' : 'nav-link' }}">
-                                    <i class="nav-icon fas fa-users"></i>
+                                    <i class="nav-icon fas fa-sitemap"></i>
                                     <p>
                                         Categorias
-                                        <?php use App\Categoria; $users_count = User::all()->count(); ?>
-
+                                        <?php use App\Categoria; $categorias_count = Categoria::all()->count(); ?>
+                                        <span class="right badge badge-danger">{{ $categorias_count ?? '0' }}</span>
                                     </p>
                                 </a>
                             </li>
@@ -150,14 +139,19 @@
                             <li class="nav-item">
                                 <a href="{{url('ventas') }}"
                                    class="{{ Request::path() === 'ventas' ? 'nav-link active' : 'nav-link' }}">
-                                    <i class="nav-icon fas fa-users"></i>
+                                    <i class="nav-icon fa fa-shopping-cart"></i>
                                     <p>
-                                        ventas
-                                        <?php use App\Ventas; $users_count = Ventas::all()->count(); ?>
+                                        Ventas
+                                        <?php use App\Ventas;
+                                        $dia =  date("d/m/Y");
+                                        $ventas_cont = Ventas::where("fecha","=",$dia)->get()->count(); ?>
+                                        <span class="right badge badge-danger">{{ $ventas_cont ?? '0' }}</span>
 
                                     </p>
                                 </a>
                             </li>
+
+                            
 
                         </ul>
                     </nav>

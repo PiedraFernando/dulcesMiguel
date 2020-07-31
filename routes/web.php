@@ -30,5 +30,6 @@ Route::resource('usuarios', 'UserController');
 
 Route::resource('categorias', 'CategoriaController');
 
-//ventas rutas
+Route::get('/totalventas', 'VentasController@totalVentas');
 Route::resource('ventas','VentasController');
+
