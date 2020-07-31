@@ -129,6 +129,8 @@
     $(document).on('click', '.borrar', function (event) {
         event.preventDefault();
         $(this).closest('tr').remove();
+        sub = $(this).closest("tr").find(".sub").html();
+        $("#total").val(parseInt($("#total").val())-sub);
     });
     $(document).on('change', '.cont', function (event) {
       sub = $(this).closest("tr").find(".sub").html();
