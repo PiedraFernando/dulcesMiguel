@@ -108,15 +108,14 @@
             data: datos,
             success: function (response) {
               let producto = JSON.parse(response)
-              console.log(producto);
               subtotal = producto["precio_venta"]*cantidad;
               $("#MiVenta").append(
                 "<tr>"+
                 "<th>"+ producto["nombre"] + "<input class='form-control cont' type='text' name='id[]' value="+producto["id"]+" hidden='true'>" +"</th>"+
                 "<th>"+ producto["cantidad_carro"] +"</th>"+
-                "<th>"+ producto["precio_venta"] +"</th>"+
+                "<th class='precio'>"+ producto["precio_venta"] +"</th>"+
                 "<th>"+ "<input class='form-control cont' type='text' name='cantidad[]' value="+cantidad+">" +"</th>"+
-                "<th>"+ subtotal +"</th>"+
+                "<th class='sub'>"+ subtotal +"</th>"+
                 "<th>"+ "<input type='button' class='borrar btn-danger btn-sm' value='Eliminar' /></div>"+ "</th>"+
                 "</tr>"
                 );
@@ -127,10 +126,18 @@
       }
   </script>
   <script>
-$(document).on('click', '.borrar', function (event) {
-    event.preventDefault();
-    $(this).closest('tr').remove();
-});
+    $(document).on('click', '.borrar', function (event) {
+        event.preventDefault();
+        $(this).closest('tr').remove();
+    });
+    $(document).on('change', '.cont', function (event) {
+      sub = $(this).closest("tr").find(".sub").html();
+      $("#total").val(parseInt($("#total").val())-sub);
+
+      nuevoSub = $(this).closest("tr").find(".precio").html() * $(this).val();
+      $(this).closest("tr").find(".sub").html(nuevoSub);
+      $("#total").val(parseInt($("#total").val())+nuevoSub);
+    });
 </script>
 
 @endsection
