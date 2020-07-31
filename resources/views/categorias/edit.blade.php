@@ -28,20 +28,6 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <label for="sub_categoria" class="col-md-4 col-form-label text-md-right">{{ __('Sub categoria') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="sub_categoria" type="text" class="form-control @error('Sub Categoria') is-invalid @enderror" name="sub_categoria" value="{{ $categoria->sub_categoria }}" required autocomplete="sub_categoria" autofocus>
-
-                                @error('Sub Categoria')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
-
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
