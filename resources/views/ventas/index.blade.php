@@ -87,6 +87,7 @@
           {
             data: 'btn'
           },
+          
 
         ],
         language: {
@@ -116,6 +117,7 @@
                 "<th>"+ producto["precio_venta"] +"</th>"+
                 "<th>"+ "<input class='form-control cont' type='text' name='cantidad[]' value="+cantidad+">" +"</th>"+
                 "<th>"+ subtotal +"</th>"+
+                "<th>"+ "<input type='button' class='borrar btn-danger btn-sm' value='Eliminar' /></div>"+ "</th>"+
                 "</tr>"
                 );
                 $("#total").val(parseInt($("#total").val())+subtotal);
@@ -124,5 +126,11 @@
         }
       }
   </script>
+  <script>
+$(document).on('click', '.borrar', function (event) {
+    event.preventDefault();
+    $(this).closest('tr').remove();
+});
+</script>
 
 @endsection
