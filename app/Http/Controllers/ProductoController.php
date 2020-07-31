@@ -15,44 +15,44 @@ class ProductoController extends Controller
      */
     public function index(Request $request)
     {
-        if($request){
+        if ($request) {
             $query = trim($request->get('search'));
-            $productos = Producto::where('nombre','LIKE','%'.$query.'%')
-                ->orWhere('abreviacion','LIKE','%'.$query.'%')
-                ->orderby('nombre','asc')->get();
-            return view('productos.index',['productos' => $productos,'search'=>$query]);
+            $productos = Producto::where('nombre', 'LIKE', '%' . $query . '%')
+                ->orWhere('abreviacion', 'LIKE', '%' . $query . '%')
+                ->orderby('nombre', 'asc')->get();
+            return view('productos.index', ['productos' => $productos, 'search' => $query]);
         }
     }
     public function add(Request $request)
     {
         $cantidad = $request->get("cantidad");
-        $producto = Producto::where('id', $request->get("id"))->firstOrFail(); 
-        $cantidad += $producto->cantidad_almacen; 
+        $producto = Producto::where('id', $request->get("id"))->firstOrFail();
+        $cantidad += $producto->cantidad_almacen;
         Producto::where('id', $request->get("id"))
-        ->update(['cantidad_almacen' => $cantidad]);
+            ->update(['cantidad_almacen' => $cantidad]);
         return redirect('/producto');
     }
     public function addCar(Request $request)
     {
         $cantidad = $request->get("cantidad");
-        $producto = Producto::where('id', $request->get("id"))->firstOrFail(); 
-        $cantidadcarro = $cantidad + $producto->cantidad_carro; 
-        $cantidadalmacen = $producto->cantidad_almacen - $cantidad; 
-        if ($cantidadalmacen<0) {
+        $producto = Producto::where('id', $request->get("id"))->firstOrFail();
+        $cantidadcarro = $cantidad + $producto->cantidad_carro;
+        $cantidadalmacen = $producto->cantidad_almacen - $cantidad;
+        if ($cantidadalmacen < 0) {
             return redirect('/producto');
-        }else{
+        } else {
             Producto::where('id', $request->get("id"))
-            ->update(['cantidad_almacen' => $cantidadalmacen]);
+                ->update(['cantidad_almacen' => $cantidadalmacen]);
             Producto::where('id', $request->get("id"))
-            ->update(['cantidad_carro' => $cantidadcarro]);
+                ->update(['cantidad_carro' => $cantidadcarro]);
             return redirect('/producto');
         }
     }
     public function faltantes()
     {
-        $productos = Producto::where('cantidad_almacen','<','5')
-                ->orderby('nombre','asc')->get();
-        return view('productos.index',['productos' => $productos,'faltantes'=> "f"]);
+        $productos = Producto::where('cantidad_almacen', '<', '5')
+            ->orderby('nombre', 'asc')->get();
+        return view('productos.index', ['productos' => $productos, 'faltantes' => "f"]);
     }
     /**
      * Show the form for creating a new resource.
@@ -72,7 +72,7 @@ class ProductoController extends Controller
      */
     public function store(ProductoForReques $request)
     {
-        
+
         if ($request->hasFile('imagen')) {
             $file = $request->file('imagen');
             $name = time() . $file->getClientOriginalName();
@@ -100,7 +100,6 @@ class ProductoController extends Controller
      */
     public function show($id)
     {
-        
     }
 
     /**
@@ -111,7 +110,7 @@ class ProductoController extends Controller
      */
     public function edit($id)
     {
-        return view('productos.edit', ['producto'=>Producto::findorFail($id)]);
+        return view('productos.edit', ['producto' => Producto::findorFail($id)]);
     }
 
     /**
